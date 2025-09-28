@@ -1,14 +1,9 @@
 
-import React from 'react'
-import { Spotlight } from './ui/Spotlight'
+import React from 'react';
 
-function Hero() {
+const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
-        <div>
-            <Spotlight />
-        </div>
-    </div>
+    <div>Hero</div>
   )
 }
 
