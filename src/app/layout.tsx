@@ -7,7 +7,8 @@ import { ThemeProvider } from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hashan's Portfolio",
+  title: "Hashan Wickramasinghe - Full Stack Developer",
+  description: "Full Stack Developer & Software Engineer specializing in modern web technologies and digital solutions",
 };
 
 export default function RootLayout({
@@ -18,10 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        
+        <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
