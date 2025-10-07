@@ -128,7 +128,6 @@ const AboutPage = () => {
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
-                  <span className="mr-2">{category.icon}</span>
                   {category.label}
                 </button>
               ))}
