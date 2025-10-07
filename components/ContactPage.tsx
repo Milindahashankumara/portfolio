@@ -195,7 +195,7 @@ const ContactPage = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-            Let's Connect
+            Let’s Connect
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
         </motion.div>
@@ -212,7 +212,7 @@ const ContactPage = () => {
             <div className="bg-gray-900/60 backdrop-blur-lg rounded-3xl p-10 border border-gray-700/50 shadow-2xl">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-bold text-white mb-3">Connect With Me</h3>
-                <p className="text-gray-400">Let's stay connected across different platforms</p>
+                <p className="text-gray-400">Let’s stay connected across different platforms</p>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
@@ -256,7 +256,7 @@ const ContactPage = () => {
           >
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-white mb-2">Send a Message</h3>
-              <p className="text-gray-400 text-sm">I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
+              <p className="text-gray-400 text-sm">I’d love to hear from you. Send me a message and I’ll respond as soon as possible.</p>
             </div>
             
             <form ref={form} onSubmit={handleSubmit} className="space-y-5">
@@ -324,7 +324,7 @@ const ContactPage = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 bg-gray-800/80 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-gray-500"
-                  placeholder="What's this about?"
+                  placeholder="What’s this about?"
                 />
               </div>
 

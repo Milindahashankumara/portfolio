@@ -96,7 +96,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
                 transition={{ delay: 0.6, duration: 0.4 }}
                 className="text-gray-300 mb-6 leading-relaxed"
               >
-                Thank you for contacting me. I've received your message and will get back to you soon.
+                Thank you for contacting me. I’ve received your message and will get back to you soon.
               </motion.p>
 
               {/* Email Confirmation */}
