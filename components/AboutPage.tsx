@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   motion,
   AnimatePresence,
@@ -54,10 +55,13 @@ const AboutPage = () => {
                 whileHover={{ scale: 1.05 }}
                 className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-purple-400/50 shadow-2xl"
               >
-                <img
+                <Image
                   src={aboutMe.photo}
                   alt={aboutMe.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="256px"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20"></div>
               </motion.div>
@@ -150,10 +154,12 @@ const AboutPage = () => {
                 >
                   <div className="flex items-center justify-center mb-3">
                     {'image' in skill ? (
-                      <img 
+                      <Image 
                         src={skill.image} 
                         alt={skill.name}
-                        className="w-12 h-12 object-contain"
+                        width={48}
+                        height={48}
+                        className="object-contain"
                       />
                     ) : (
                       <span className="text-3xl">{'icon' in skill ? skill.icon : '🔧'}</span>

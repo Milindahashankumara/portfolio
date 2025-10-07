@@ -8,6 +8,7 @@ import { Sphere, MeshDistortMaterial, Float } from "@react-three/drei";
 import * as THREE from "three";
 
 import { projects } from "@/data";
+import Image from "next/image";
 import { PinContainer } from "./ui/Pin";
 
 interface Project {
@@ -104,15 +105,13 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index, isAct
                   <div className="absolute top-2 left-2 bg-black/75 text-white text-xs px-2 py-1 rounded z-10">
                     {project.img}
                   </div>
-                  <img 
+                  <Image 
                     src={project.img} 
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                    onError={(e) => {
-                      console.log(`Failed to load image: ${project.img}`);
-                      e.currentTarget.src = "/favicon.png"; // Fallback image
-                    }}
-                    onLoad={() => console.log(`Loaded image: ${project.img}`)}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    priority={index === 0}
                   />
                   
                   {/* Subtle gradient overlay for depth */}
@@ -143,7 +142,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index, isAct
                   whileHover={{ y: -5, scale: 1.1 }}
                   className="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-xl flex items-center justify-center border border-white/20 shadow-lg"
                 >
-                  <img src={icon} alt="tech" className="w-5 h-5" />
+                  <Image src={icon} alt="tech" width={20} height={20} />
                 </motion.div>
               ))}
               {project.iconLists.length > 3 && (
@@ -226,7 +225,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index, isAct
                   }}
                   className="aspect-square bg-gray-800/60 backdrop-blur-lg border border-gray-600/50 rounded-xl flex items-center justify-center hover:bg-purple-600/20 hover:border-purple-500/50 transition-all duration-300 cursor-pointer"
                 >
-                  <img src={icon} alt="tech" className="w-6 h-6" />
+                  <Image src={icon} alt="tech" width={24} height={24} />
                 </motion.div>
               ))}
             </div>
