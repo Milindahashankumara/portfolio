@@ -1,18 +1,24 @@
 "use client";
-
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { aboutMe, skills, education } from "@/data";
-import { useState } from "react";
 
 const AboutPage = () => {
   const [activeSkillCategory, setActiveSkillCategory] = useState("frontend");
 
   const skillCategories = [
-    { key: "frontend", label: "Frontend", icon: "🎨" },
-    { key: "backend", label: "Backend", icon: "⚙️" },
-    { key: "database", label: "Database", icon: "�️" },
-    { key: "programming", label: "Programming Languages", icon: "�" },
-    { key: "tools", label: "Tools", icon: "🛠️" },
+    { key: "frontend", label: "Frontend",  },
+    { key: "backend", label: "Backend", },
+    { key: "database", label: "Database",  },
+    { key: "mobile", label: "Mobile Development",  },
+    { key: "programming", label: "Programming",  },
+    { key: "tools", label: "Tools", },
+    
   ];
 
   return (
@@ -56,7 +62,7 @@ const AboutPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20"></div>
               </motion.div>
               <div className="absolute -bottom-2 -right-2 bg-green-400 w-8 h-8 rounded-full border-4 dark:border-gray-900 border-white flex items-center justify-center">
-                <span className="text-xs">✨</span>
+                <span className="text-xs"></span>
               </div>
             </div>
 
@@ -67,12 +73,9 @@ const AboutPage = () => {
               <p className="text-purple-400 font-medium mb-4">
                 {aboutMe.title}
               </p>
-              <div className="space-y-2 dark:text-gray-300 text-gray-600">
-                <p className="flex items-center gap-2">
-                  <span>📍</span> {aboutMe.location}
-                </p>
-                <p className="flex items-center gap-2">
-                  <span>✅</span> {aboutMe.availability}
+              <div className="dark:text-gray-300 text-gray-600">
+                <p className="flex items-center  justify-center md:justify-start">
+                  Moratuwa Sri Lanka
                 </p>
               </div>
             </div>
@@ -146,7 +149,15 @@ const AboutPage = () => {
                   className="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center justify-center mb-3">
-                    <span className="text-3xl">{skill.icon}</span>
+                    {'image' in skill ? (
+                      <img 
+                        src={skill.image} 
+                        alt={skill.name}
+                        className="w-12 h-12 object-contain"
+                      />
+                    ) : (
+                      <span className="text-3xl">{'icon' in skill ? skill.icon : '🔧'}</span>
+                    )}
                   </div>
                   <h4 className="font-semibold text-white text-center">
                     {skill.name}
@@ -181,16 +192,18 @@ const AboutPage = () => {
                     <h4 className="text-xl font-bold dark:text-white text-gray-900 mb-2">
                       {edu.degree}
                     </h4>
-                    <p className="text-purple-400 font-medium mb-1">
-                      {edu.school}
-                    </p>
+                    {edu.school && (
+                      <p className="text-purple-400 font-medium mb-1">
+                        {edu.school}
+                      </p>
+                    )}
                     <p className="dark:text-gray-400 text-gray-500 text-sm">
-                      📍 {edu.location} • 📅 {edu.year}
+                       {edu.location} •  {edu.year}
                     </p>
                   </div>
                   <div className="mt-4 md:mt-0 md:text-right">
                     <span className="inline-block bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium">
-                      GPA: {edu.gpa}
+                      {edu.CGPA ? `CGPA: ${edu.CGPA}` : edu.SUBJECTS ? `Results: ${edu.SUBJECTS}` : ''}
                     </span>
                   </div>
                 </div>
@@ -198,40 +211,6 @@ const AboutPage = () => {
                 <p className="dark:text-gray-300 text-gray-600 mb-4">
                   {edu.description}
                 </p>
-
-                {edu.honors.length > 0 && (
-                  <div className="mb-4">
-                    <h5 className="font-semibold dark:text-white text-gray-900 mb-2">
-                      🏆 Honors & Awards:
-                    </h5>
-                    <div className="flex flex-wrap gap-2">
-                      {edu.honors.map((honor, i) => (
-                        <span
-                          key={i}
-                          className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-md text-sm"
-                        >
-                          {honor}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <h5 className="font-semibold dark:text-white text-gray-900 mb-2">
-                    📚 Key Coursework:
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.coursework.map((course, i) => (
-                      <span
-                        key={i}
-                        className="dark:bg-gray-700 bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1 rounded-md text-sm"
-                      >
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             ))}
           </div>
