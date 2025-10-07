@@ -161,7 +161,7 @@ const AboutPage = () => {
                         className="object-contain"
                       />
                     ) : (
-                      <span className="text-3xl">{'icon' in skill ? skill.icon : '🔧'}</span>
+                      <span className="text-3xl">{(skill as any).icon ?? '🔧'}</span>
                     )}
                   </div>
                   <h4 className="font-semibold text-white text-center">
