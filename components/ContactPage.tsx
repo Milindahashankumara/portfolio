@@ -195,20 +195,8 @@ const ContactPage = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-            Get In Touch
+            Let&apos;s Connect
           </h2>
-          <p className="text-lg text-gray-300 mb-4">
-            Ready to work together? Let's create something amazing!
-          </p>
-          <p className="text-base text-gray-400 mb-6">
-            Connect with me through the contact form or email me directly at{" "}
-            <a 
-              href="mailto:milindahashan07@gmail.com" 
-              className="text-purple-400 hover:text-purple-300 transition-colors"
-            >
-              milindahashan07@gmail.com
-            </a>
-          </p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
         </motion.div>
 
