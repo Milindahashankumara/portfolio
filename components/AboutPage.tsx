@@ -117,19 +117,54 @@ const AboutPage = () => {
 
           {/* Category Tabs */}
           <div className="flex justify-center mb-8">
-            <div className="flex space-x-2 dark:bg-gray-800 bg-gray-100 p-2 rounded-full">
-              {skillCategories.map((category) => (
-                <button
+            <div className="flex flex-wrap justify-center gap-3 p-4 bg-black/20 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
+              {skillCategories.map((category, index) => (
+                <motion.button
                   key={category.key}
                   onClick={() => setActiveSkillCategory(category.key)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -2,
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`group relative px-6 py-3 rounded-xl font-semibold transition-all duration-500 overflow-hidden ${
                     activeSkillCategory === category.key
-                      ? "bg-purple-500 text-white shadow-lg"
-                      : "text-gray-300 hover:text-white"
+                      ? "bg-gradient-to-r from-purple-500/90 via-blue-500/90 to-purple-600/90 text-white shadow-xl shadow-purple-500/25 border border-purple-400/50"
+                      : "bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-white/30 backdrop-blur-sm"
                   }`}
                 >
-                  {category.label}
-                </button>
+                  {/* Active button background effect */}
+                  {activeSkillCategory === category.key && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-600/20"
+                      style={{
+                        borderRadius: '12px',
+                      }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-blue-500/0 to-purple-600/0 group-hover:from-purple-500/10 group-hover:via-blue-500/10 group-hover:to-purple-600/10 transition-all duration-300 rounded-xl" />
+                  
+                  {/* Button text */}
+                  <span className="relative z-10 text-sm font-medium">
+                    {category.label}
+                  </span>
+
+                  {/* Active indicator dot */}
+                  {activeSkillCategory === category.key && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg"
+                    />
+                  )}
+                </motion.button>
               ))}
             </div>
           </div>
